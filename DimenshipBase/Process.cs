@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using DimenshipBase.FungibleItems;
 
 namespace DimenshipBase
 {
-    
     /// <summary>
     /// !do we allow queuing processes - Not initially, this requires cancellation mechanics and recalculation
     /// of queued processes, return of resources. Later on we may extend the game with queuing
@@ -12,52 +13,52 @@ namespace DimenshipBase
     public class ProcessBase
     {
         public int UniqueId { get; set; }
-        private List<StepBase> list;
+        public List<StepBase> Steps;
+
+        public GameTime FinishBy
+        {
+            get
+            {
+                var last = Steps.Last();
+                return last.StartTime + last.DurationTicks;
+            }
+        }
     }
 
     public class ProductionProcessFactory
     {
         public ProcessBase Produce(ComponentRecipe recipe, ISystemStateSet system)
         {
+            throw new NotImplementedException();
             // book Facility
             var facilities = system.GetSubState<FacilitySubSystem>();
-            foreach (var facility in facilities.GetAvailableFacility())
+            //foreach (var facility in facilities.GetAvailableFacility())
             {
-                
             }
-            
+
             // book//tap resources
-            var storage = system.GetSubState<FungibleItemStorage>();
+            var storage = system.GetSubState<ItemStorageSubSystem>();
             foreach (var part in recipe.BaselineIngredientList)
             {
-                storage
+                //storage
             }
+
+            return null;
         }
     }
-    
-    
+
 
     public abstract class StepBase
     {
-        public bool Complete { get; private set; }
-        public int DurationTicks { get; private set; }
-        public GameTime StartTime { get; private set; }
+        public bool Complete { get; set; }
+        public int DurationTicks { get; set; }
+        public GameTime StartTime { get; set; }
         public abstract string LogLine { get; }
         public abstract string DetailedDescription { get; }
 
-        public abstract void Apply(ISystemStateSet system);
-    }
-
-    public class ResourceBase
-    {
-        public ResourceLock Lock;
-
-    }
-
-    public class ResourceLock
-    {
-        public ProcessBase Owner;
-        public ResourceBase Resource;
-            //public 
+        public virtual void OnProcessStart(ISystemStateSet system) { }
+        public virtual void OnStepStart(ISystemStateSet system) { }
+        public virtual void OnStepEnd(ISystemStateSet system) { }
+        public virtual void OnProcessEnd(ISystemStateSet system) { }
     }
 }
