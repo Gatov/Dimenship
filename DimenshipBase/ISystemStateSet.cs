@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace DimenshipBase
 {
@@ -14,25 +13,6 @@ namespace DimenshipBase
     {
         string Id { get; }
         string Name { get; }
-    }
-
-    /// <summary>
-    /// Representation of the game
-    /// </summary>
-    public class DimenshipSystem : ISystemStateSet
-    {
-        private readonly Dictionary<string, ISystemSubState> _subStates = new Dictionary<string, ISystemSubState>();
-
-        public T GetSubState<T>() where T : ISystemSubState
-        {
-            return (T)_subStates[typeof(T).Name];
-        }
-
-        public GameTime CurrentTime { get; }
-        public void AddSubsystem(ISystemSubState subSystem)
-        {
-            _subStates[subSystem.GetType().Name] = subSystem;
-        }
     }
 
     /// <summary>

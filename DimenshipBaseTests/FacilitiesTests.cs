@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Json;
+using System.Text;
 using DimenshipBase;
 using DimenshipBase.Production;
 using NUnit.Framework;
@@ -10,11 +13,13 @@ namespace DimenshipBaseTests;
 [TestFixture]
 public class FacilitiesTests
 {
-    public ISystemStateSet Generate()
+    public ISystemStateSet GenerateSystem()
     {
         DimenshipSystem system = new DimenshipSystem();
-        FacilitySubSystem fs = new FacilitySubSystem(system);
+        FacilitySubSystem fs = new FacilitySubSystem();
         StaticDataSubSystem sd = new StaticDataSubSystem();
+        
+        fs.Initialize(system);
         FacilityBaseClass fbFactory = new FacilityBaseClass()
         {
             Name = "Basic Factory",
@@ -52,7 +57,7 @@ public class FacilitiesTests
     {
         GameTime systemTime = new GameTime(new DateTime(2021, 12, 10, 19, 00, 00));
 
-        var system = Generate();
+        var system = GenerateSystem();
         var fs = system.GetSubState<FacilitySubSystem>();
         var freeFactories = fs.GetAvailableFacility("Workshop", systemTime).ToList();
         Assert.AreEqual(2, freeFactories.Count); // 2 factories
@@ -69,5 +74,13 @@ public class FacilitiesTests
         systemTime = systemTime.AddTicks(60); // 1 minute passed
         var againFreeFactories = fs.GetAvailableFacility("Workshop", systemTime).ToList();
         Assert.AreEqual(2, againFreeFactories.Count); // 2 factories
+    }
+
+    [Test]
+    public void TestFacilitySave()
+    {
+        var sys = GenerateSystem();
+        var fs = sys.GetSubState<FacilitySubSystem>();
+        Console.WriteLine(Utils.AsJSON(fs));
     }
 }

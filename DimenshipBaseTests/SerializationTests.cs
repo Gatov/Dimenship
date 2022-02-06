@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Xml.Serialization;
 using DimenshipBase;
 using DimenshipBase.FungibleItems;
 using NUnit.Framework;
@@ -53,6 +55,18 @@ namespace DimenshipBaseTests
             var xml = (new List<FacilityBaseClass>() { fbFactory }).ToXmlString();
             Console.WriteLine(xml);
             Assert.Pass();
+        }
+
+        [Test]
+        public void TestRecipeLoad()
+        {
+            XmlSerializer ser = new XmlSerializer(typeof(List<ComponentRecipe>));
+            string file = Path.Combine(TestContext.CurrentContext.TestDirectory, "TestRecipeData.xml");
+            using (var s = new FileStream(file, FileMode.Open, FileAccess.Read))
+            {
+                ser.Deserialize(s);
+            }
+
         }
     }
 }

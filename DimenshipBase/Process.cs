@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using DimenshipBase.FungibleItems;
 
 namespace DimenshipBase
@@ -21,6 +22,18 @@ namespace DimenshipBase
             {
                 var last = Steps.Last();
                 return last.StartTime + last.DurationTicks;
+            }
+        }
+
+        public void PassTime(ISystemStateSet system, GameTime newTime)
+        {
+            foreach (var step in Steps)
+            {
+                if (step.Complete) continue;
+                if(step.FinishTime <newTime)
+                    step.OnStepEnd(system);
+                else
+                    break; // the step is not complete and we assume sequential performance
             }
         }
     }
@@ -53,12 +66,24 @@ namespace DimenshipBase
         public bool Complete { get; set; }
         public int DurationTicks { get; set; }
         public GameTime StartTime { get; set; }
+        public GameTime FinishTime => StartTime + DurationTicks;
         public abstract string LogLine { get; }
         public abstract string DetailedDescription { get; }
 
         public virtual void OnProcessStart(ISystemStateSet system) { }
-        public virtual void OnStepStart(ISystemStateSet system) { }
-        public virtual void OnStepEnd(ISystemStateSet system) { }
+        //public virtual void OnStepStart(ISystemStateSet system) { }
+        public virtual void OnStepEnd(ISystemStateSet system)
+        {
+            Complete = true;
+            Log(system, LogLine);
+
+        }
         public virtual void OnProcessEnd(ISystemStateSet system) { }
+
+        private void Log(ISystemStateSet system, string line)
+        {
+            var log = system.GetSubState<NotificationSubSystem>();
+            log.LogLine(line);
+        }
     }
 }

@@ -1,34 +1,59 @@
 using System.Collections.Generic;
 using DimenshipBase.FungibleItems;
 
-namespace DimenshipBase;
-
-public class StaticDataSubSystem : ISystemSubState
+namespace DimenshipBase
 {
-    public string Id => "StaticData";
-    public string Name => "Static data subsystem";
-    private Dictionary<string, ItemClassBase> FungibleItemClasses = new Dictionary<string, ItemClassBase>();
-    private Dictionary<string, FacilityBaseClass> FacilityClasses = new Dictionary<string, FacilityBaseClass>();
-    private Dictionary<string, ComponentRecipe> Recipes = new Dictionary<string, ComponentRecipe>();
 
-    public FacilityBaseClass GetFacilityClass(string classId)
+
+    public class StaticDataSubSystem : ISystemSubState
     {
-        return FacilityClasses[classId];
+        public string Id => "StaticData";
+        public string Name => "Static data subsystem";
+        private Dictionary<string, ItemClassBase> FungibleItemClasses = new Dictionary<string, ItemClassBase>();
+        private Dictionary<string, FacilityBaseClass> FacilityClasses = new Dictionary<string, FacilityBaseClass>();
+        private Dictionary<string, ComponentRecipe> Recipes = new Dictionary<string, ComponentRecipe>();
+
+        public FacilityBaseClass GetFacilityClass(string classId)
+        {
+            return FacilityClasses[classId];
+        }
+
+        public ItemClassBase GetItemClass(string classId)
+        {
+            return FungibleItemClasses[classId];
+        }
+
+        public void AddFacilityClass(FacilityBaseClass fc)
+        {
+            FacilityClasses[fc.Id] = fc;
+        }
+
+        public void AddRecipe(ComponentRecipe recipe)
+        {
+            Recipes.Add(recipe.Id, recipe);
+        }
+
+        public ComponentRecipe GetRecipe(string id)
+        {
+            return Recipes[id];
+        }
+
+        
     }
-    public ItemClassBase GetItemClass(string classId)
+    public enum Category
     {
-        return FungibleItemClasses[classId];
+        none,
+        factory,
+        component,
+        recipe,
+        recource
     }
 
-    public void AddFacilityClass(FacilityBaseClass fc)
+    public static class StaticIdPathEtensions
     {
-        FacilityClasses[fc.Id] = fc;
+        public static string Path(this Category c, params string[] args)
+        {
+            return $"{c}.{string.Join(".",args)}";
+        }
     }
-}
-
-public class StaticData
-{
-    private Dictionary<string, ItemClassBase> FungibleItemClasses;
-    private Dictionary<string, FacilityBaseClass> FacilityClasses;
-    private Dictionary<string, ComponentRecipe> Recipes;
 }

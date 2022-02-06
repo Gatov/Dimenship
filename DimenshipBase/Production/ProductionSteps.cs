@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using DimenshipBase.FungibleItems;
 
 namespace DimenshipBase.Production;
@@ -7,7 +6,7 @@ namespace DimenshipBase.Production;
 public class LogisticsStep : StepBase
 {
     public List<Ingredient> Ingridients;
-    public override string LogLine => "Moving resources to the production location";
+    public override string LogLine => "Moved resources to the production location";
     public override string DetailedDescription { get; } = "";
 
     public override void OnProcessStart(ISystemStateSet system)

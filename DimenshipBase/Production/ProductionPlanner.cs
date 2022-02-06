@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using DimenshipBase.FungibleItems;
 
 namespace DimenshipBase.Production;
@@ -94,9 +95,12 @@ public class ProductionPlannerSingleFacility
     }
 }
 
+[DataContract(Name = "ProductionEstimate")]
 public class ProductionEstimate
 {
+    [DataMember]
     public List<IngredientEstimate> Ingredients;
+    [DataMember]
     public List<FacilityEstimate> Facilities;
     public bool Failed {
         get
@@ -107,6 +111,7 @@ public class ProductionEstimate
         
     }
 
+    [DataMember]
     public int TimeToFinish { get; set; }
 }
 
@@ -117,8 +122,10 @@ public class FacilityEstimate
     public string AllocatedName { get; set; }
 }
 
+[DataContract]
 public class IngredientEstimate : Ingredient
 {
-    public int Available { get; set; }
+
+    [DataMember]public int Available { get; set; }
     public bool IsEnough => Available >= Required;
 }

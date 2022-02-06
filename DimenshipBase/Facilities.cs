@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 namespace DimenshipBase
@@ -26,6 +27,7 @@ namespace DimenshipBase
         }
     }
 
+    [DataContract(Name = "Facility")]
     public class Facility
     {
         public Facility(int uniqueId)
@@ -33,7 +35,10 @@ namespace DimenshipBase
             UniqueId = uniqueId;
         }
 
+        [DataMember(Name = "id")]
         [XmlAttribute] public int UniqueId { get; set; }
+        
+        [DataMember(Name = "name")]
         [XmlAttribute] public string Name { get; set; }
 
         public FacilityBaseClass GetClass(ISystemStateSet sys)
@@ -42,6 +47,7 @@ namespace DimenshipBase
 
         private FacilityBaseClass _class;
 
+        [DataMember(Name = "class")]
         [XmlElement]
         public string ClassId { get; set; }
         //[XmlIgnore]
@@ -53,9 +59,17 @@ namespace DimenshipBase
     }
 
 
-    public class ResourceLock
+    
+    [DataContract(Name="flock")]
+    public class FacilityLock
     {
-        public ProcessBase Owner;
-        public int UniqueId;
+        public ProcessBase GetOwner(ISystemStateSet system)
+        {
+            var processes = system.GetSubState<ProcessSubSystem>();
+            return processes.Get(ProcessId);
+        }
+
+        public int ProcessId;
+        public int FacilityId;
     }
 }
