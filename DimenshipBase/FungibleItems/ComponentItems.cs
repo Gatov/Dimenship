@@ -22,10 +22,10 @@ namespace DimenshipBase.FungibleItems
     public class ComponentRecipe : ClassBase
     {
         //[XmlAttribute] public string RecipeId { get; set; }
-        [DataMember]
+        [DataMember(Order = 6)]
         [XmlAttribute] public int BaselineBuildTime { get; set; }
-        [DataMember] public string RequiredFacility { get; set; }
-        [DataMember]
+        [DataMember(Order = 7)] public string RequiredFacility { get; set; }
+        [DataMember(Order = 8)]
         [XmlElement("Ingridient")] public List<Ingredient> BaselineIngredientList;
     }
 }

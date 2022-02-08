@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 namespace DimenshipBase
@@ -7,13 +8,14 @@ namespace DimenshipBase
     /// Basic static class descriptor
     /// </summary>
     [Serializable]
+    [DataContract]
     public class ClassBase
     {
-        [XmlAttribute] public string Id { get; set; }
-        [XmlAttribute] public string Name { get; set; }
-        [XmlAttribute] public string Tags { get; set; }
-        [XmlAttribute] public string GlyphName { get; set; }
-        public string Description { get; set; }
+        [DataMember(Order = 1)][XmlAttribute] public string Id { get; set; }
+        [DataMember(Order = 2)][XmlAttribute] public string Name { get; set; }
+        [DataMember(Order = 3)][XmlAttribute] public string Tags { get; set; }
+        [DataMember(Order = 4)][XmlAttribute] public string GlyphName { get; set; }
+        [DataMember(Order = 5)]public string Description { get; set; }
     }
 
 
@@ -30,10 +32,11 @@ namespace DimenshipBase
 
 
     [Serializable]
+    [DataContract]
     public class ItemClassBase : ClassBase
     {
-        [XmlAttribute] public double Volume { get; set; }
-        [XmlAttribute] public double Weight { get; set; }
+        [DataMember] [XmlAttribute] public double Volume { get; set; }
+        [DataMember] public double Weight { get; set; }
     }
 
 

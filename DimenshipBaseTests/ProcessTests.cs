@@ -55,6 +55,16 @@ public class ProcessTests
         store.Store(Category.recource.Path("metal"), 1000);
         store.Store(Category.recource.Path("composite"), 1000);
         staticData.AddRecipe(recipe);
+        staticData.AddItemClass(new ItemClassBase()
+        {
+            Id = Category.recource.Path("metal"),
+            Description = "Metal description",
+            Name = "Metal name",
+            Tags = "basic,resource,metal",
+            Volume = 1,
+            Weight = 7.86,
+            GlyphName = Category.recource.Path("metal"),
+        });
         
         system.AddSubsystem(facilities);
         system.AddSubsystem(staticData);
@@ -64,12 +74,22 @@ public class ProcessTests
     }
 
     [Test]
-    public void TestProcessGeneration()
+    public void TestProcessEstimateGeneration()
     {
         var system = GenerateSystem();
         var recipe = system.GetSubState<StaticDataSubSystem>().GetRecipe(Category.recipe.Path("components", "chassis", "wheel", "mk1"));
         var processFactory = new ProductionPlannerSingleFacility();
         var estimate = processFactory.GetEstimate(system, recipe, null);
+        //var ing = new Ingredient() { Required = 1, ResourceId = @"test" };
+        Console.WriteLine(Utils.AsJSON(estimate));
+    }
+    [Test]
+    public void TestProcessGeneration()
+    {
+        var system = GenerateSystem();
+        var recipe = system.GetSubState<StaticDataSubSystem>().GetRecipe(Category.recipe.Path("components", "chassis", "wheel", "mk1"));
+        var processFactory = new ProductionPlannerSingleFacility();
+        var estimate = processFactory.CreateProcess(system, recipe, null);
         //var ing = new Ingredient() { Required = 1, ResourceId = @"test" };
         Console.WriteLine(Utils.AsJSON(estimate));
     }

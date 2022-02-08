@@ -21,6 +21,14 @@
       <Content Include="TestRecipeData.xml">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Remove="Data\StaticDataRegression.json" />
+      <Content Include="Data\StaticDataRegression.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
+      <None Remove="Data\StaticDataTests.json" />
+      <Content Include="Data\StaticDataTests.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>

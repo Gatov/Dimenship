@@ -1,0 +1,45 @@
+{
+  "Facility":[
+    {
+      "Id":"factory.basic",
+      "Name":"Basic Factory",
+      "Tags":"factory production facility",
+      "GlyphName":"facilities\/factory\/basic",
+      "Description":"Basic Factory for simple components production",
+      "Functions":"Workshop Assembly Purifier",
+      "IdlePowerConsumption":0.1
+    }
+  ],
+  "Items":[
+    {
+      "Id":"recource.metal",
+      "Name":"Metal name",
+      "Tags":"basic,resource,metal",
+      "GlyphName":"recource.metal",
+      "Description":"Metal description",
+      "Volume":1,
+      "Weight":7.86
+    }
+  ],
+  "Recipes":[
+    {
+      "Id":"recipe.components.chassis.wheel.mk1",
+      "Name":"Wheel Chassis MK1",
+      "Tags":"chassis,wheel,component,bot",
+      "GlyphName":"recipe.components.chassis.wheel.mk1",
+      "Description":"Description of Wheel Chassis MK1",
+      "BaselineBuildTime":120,
+      "RequiredFacility":"factory.basic",
+      "BaselineIngredientList":[
+        {
+          "Required":10,
+          "ResourceId":"recource.metal"
+        },
+        {
+          "Required":20,
+          "ResourceId":"recource.composite"
+        }
+      ]
+    }
+  ]
+}
