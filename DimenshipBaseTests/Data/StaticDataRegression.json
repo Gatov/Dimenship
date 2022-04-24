@@ -6,38 +6,71 @@
       "Tags":"factory production facility",
       "GlyphName":"facilities\/factory\/basic",
       "Description":"Basic Factory for simple components production",
-      "Functions":"Workshop Assembly Purifier",
+      "Functions":"workshop assembly refinery",
       "IdlePowerConsumption":0.1
     }
   ],
   "Items":[
     {
-      "Id":"recource.metal",
-      "Name":"Metal name",
-      "Tags":"basic,resource,metal",
-      "GlyphName":"recource.metal",
-      "Description":"Metal description",
+      "Id":"resource.ore",
+      "Name":"Ore",
+      "Tags":"basic,resource,ore",
+      "GlyphName":"",
+      "Description":"TODO:Meteor ore description",
       "Volume":1,
       "Weight":7.86
+    },
+    {
+      "Id":"resource.ice",
+      "Name":"ice",
+      "Tags":"basic,resource,ice",
+      "GlyphName":"",
+      "Description":"TODO:Meteor ice description",
+      "Volume":1,
+      "Weight":1.2
+    },
+    {
+      "Id":"resource.organic",
+      "Name":"organic",
+      "Tags":"basic,resource,organic",
+      "GlyphName":"",
+      "Description":"organic description",
+      "Volume":1,
+      "Weight":0.9
+    },
+    {
+      "Id":"component.chassis.wheel.mk1",
+      "Name":"to--do",
+      "Tags":"todo",
+      "GlyphName":"",
+      "Description":"todo",
+      "Volume":19,
+      "Weight":22.9
     }
+
   ],
   "Recipes":[
     {
-      "Id":"recipe.components.chassis.wheel.mk1",
+      "Id":"recipe.component.chassis.wheel.mk1",
+      "Item": "components.chassis.wheel.mk1",
       "Name":"Wheel Chassis MK1",
       "Tags":"chassis,wheel,component,bot",
       "GlyphName":"recipe.components.chassis.wheel.mk1",
       "Description":"Description of Wheel Chassis MK1",
       "BaselineBuildTime":120,
-      "RequiredFacility":"factory.basic",
+      "RequiredFacility":"workshop",
       "BaselineIngredientList":[
         {
           "Required":10,
-          "ResourceId":"recource.metal"
+          "ResourceId":"resource.ore"
         },
         {
           "Required":20,
-          "ResourceId":"recource.composite"
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":15,
+          "ResourceId":"resource.organic"
         }
       ]
     }

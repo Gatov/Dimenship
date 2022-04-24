@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Json;
-using System.Text;
 using DimenshipBase;
 using DimenshipBase.Production;
+using DimenshipBase.SubSystems;
 using NUnit.Framework;
 
 namespace DimenshipBaseTests;
@@ -18,7 +16,8 @@ public class FacilitiesTests
         DimenshipSystem system = new DimenshipSystem();
         FacilitySubSystem fs = new FacilitySubSystem();
         StaticDataSubSystem sd = new StaticDataSubSystem();
-        
+        ProcessSubSystem ps = new ProcessSubSystem();
+        ps.Initialize(system);
         fs.Initialize(system);
         FacilityBaseClass fbFactory = new FacilityBaseClass()
         {
@@ -49,6 +48,7 @@ public class FacilitiesTests
         
         system.AddSubsystem(fs);
         system.AddSubsystem(sd);
+        system.AddSubsystem(ps);
         return system;
     }
 
@@ -59,14 +59,16 @@ public class FacilitiesTests
 
         var system = GenerateSystem();
         var fs = system.GetSubState<FacilitySubSystem>();
+        var ps = system.GetSubState<ProcessSubSystem>();
         var freeFactories = fs.GetAvailableFacility("Workshop", systemTime).ToList();
         Assert.AreEqual(2, freeFactories.Count); // 2 factories
         ProcessBase production = new ProcessBase()
         {
-            UniqueId = 1,
             Steps = new List<StepBase>() { new LogisticsStep() { StartTime = systemTime, DurationTicks = 120 } }
         };
+        ps.Add(production);
 
+        
         fs.Book(freeFactories.First().UniqueId, production);
         systemTime = systemTime.AddTicks(60); // 1 minute passed
         var stillFreeFactories = fs.GetAvailableFacility("Workshop", systemTime).ToList();

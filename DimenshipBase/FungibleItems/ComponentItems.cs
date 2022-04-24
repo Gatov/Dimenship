@@ -25,7 +25,9 @@ namespace DimenshipBase.FungibleItems
         [DataMember(Order = 6)]
         [XmlAttribute] public int BaselineBuildTime { get; set; }
         [DataMember(Order = 7)] public string RequiredFacility { get; set; }
-        [DataMember(Order = 8)]
+        [DataMember(Order = 8)]public string Item { get; set; }
+
+        [DataMember(Order = 9)]
         [XmlElement("Ingridient")] public List<Ingredient> BaselineIngredientList;
     }
 }

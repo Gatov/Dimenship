@@ -1,0 +1,638 @@
+{
+  "Facility":[
+    {
+      "Id":"factory.basic",
+      "Name":"Basic Factory",
+      "Tags":"factory production facility",
+      "GlyphName":"facilities\/factory\/basic",
+      "Description":"Basic Factory for simple components production",
+      "Functions":"workshop assembly refinery",
+      "IdlePowerConsumption":0.1
+    }
+  ],
+  "Items":[
+    {
+      "Id":"resource.ore",
+      "Name":"Ore",
+      "Tags":"basic,resource,ore",
+      "GlyphName":" ",
+      "Description":"Chunks of raw materials harvested from asteroids.",
+      "Volume":"1",
+      "Weight":"7.86"
+    },
+    {
+      "Id":"resource.ice",
+      "Name":"Ice",
+      "Tags":"basic,resource,ice",
+      "GlyphName":" ",
+      "Description":"Materials gathered from ice asteroids",
+      "Volume":"1",
+      "Weight":"1.2"
+    },
+    {
+      "Id":"resource.organic",
+      "Name":"Organic",
+      "Tags":"basic,resource,organic",
+      "GlyphName":" ",
+      "Description":"Carbon-based compounds, derived from living organisms.",
+      "Volume":"1",
+      "Weight":"0.9"
+    },
+    {
+      "Id":"component.chassis.wheel.mk1",
+      "Name":"Wheels Chassis MK1",
+      "Tags":"basic,chassis,wheel",
+      "GlyphName":" ",
+      "Description":"A simple wheel designed to quickly get from place to place on smoother ground",
+      "Volume":"19",
+      "Weight":"22.9"
+    },
+    {
+      "Id":"component.chassis.hover",
+      "Name":"Magnetic hover Chassis",
+      "Tags":"basic,chassis,hover",
+      "GlyphName":" ",
+      "Description":"Uses more energy, but quickly covers large areas, including those where wheels cannot pass",
+      "Volume":"5",
+      "Weight":"17.6"
+    },
+    {
+      "Id":"component.chassis.legs",
+      "Name":"Leg Chassis",
+      "Tags":"basic,chassis,legs",
+      "GlyphName":" ",
+      "Description":"Slower method of transportation more suitable to rocky regions",
+      "Volume":"11",
+      "Weight":"19.8"
+    },
+    {
+      "Id":"component.sensor.radar",
+      "Name":"Radar Sensor",
+      "Tags":"basic,sensor,radar",
+      "GlyphName":" ",
+      "Description":"Sends out electromagnetic waves as short pulses which are reflected back to the radar by objects in their path. Works in bad light conditions, but the images are not very clear.",
+      "Volume":"13",
+      "Weight":"4.6"
+    },
+    {
+      "Id":"component.sensor.camera",
+      "Name":"Camera Sensor",
+      "Tags":"basic,sensor,camera",
+      "GlyphName":" ",
+      "Description":"Condenses light rays in a single point to create a sharp image. If a few are equipped, a 3D image can be formed.",
+      "Volume":"2",
+      "Weight":"0.7"
+    },
+    {
+      "Id":"component.sensor.microphone",
+      "Name":"Sonar Sensor",
+      "Tags":"basic,sensor,microphone",
+      "GlyphName":" ",
+      "Description":"Converts sound into a small electrical current. Sound waves hit a diaphragm that vibrates, moving a magnet near a coil.",
+      "Volume":"2.4",
+      "Weight":"0.9"
+    },
+    {
+      "Id":"component.tool.pickaxe",
+      "Name":"Pickaxe Tool",
+      "Tags":"basic,tool,pickaxe",
+      "GlyphName":" ",
+      "Description":"A large tool consisting of a curved, pointed piece of metal with a long handle joined to the middle. Usefull for breaking up rocks or the ground.",
+      "Volume":"5",
+      "Weight":"2.8"
+    },
+    {
+      "Id":"component.tool.storage",
+      "Name":"Storage Tool",
+      "Tags":"basic,tool,storage",
+      "GlyphName":" ",
+      "Description":"An empty lightweight container for collecting and bringing back materials.",
+      "Volume":"12",
+      "Weight":"0.6"
+    },
+    {
+      "Id":"component.tool.drill",
+      "Name":"Drill Tool",
+      "Tags":"basic,tool,drill",
+      "GlyphName":" ",
+      "Description":"Efficient drilling of large diameter bores in metals, rocks and minerals.",
+      "Volume":"7",
+      "Weight":"24.7"
+    },
+    {
+      "Id":"component.weapon.gun",
+      "Name":"Gun",
+      "Tags":"basic,weapon,gun",
+      "GlyphName":" ",
+      "Description":"Slow-firing long-range weapon, able to deal crippling blows with great economy.",
+      "Volume":"5",
+      "Weight":"4.6"
+    },
+    {
+      "Id":"component.weapon.laser",
+      "Name":"Laser",
+      "Tags":"basic,weapon,laser",
+      "GlyphName":" ",
+      "Description":"Fires a concentrated, persistent stream of energy at the target",
+      "Volume":"7",
+      "Weight":"5.8"
+    },
+    {
+      "Id":"component.weapon.bomb",
+      "Name":"Bomb",
+      "Tags":"basic,weapon,bomb",
+      "GlyphName":" ",
+      "Description":"Produces an energy blast that damages everything in an area",
+      "Volume":"2",
+      "Weight":"3.5"
+    },
+    {
+      "Id":"component.shield.weak",
+      "Name":"Weak shield",
+      "Tags":"basic,shield",
+      "GlyphName":" ",
+      "Description":"A small shield that strengthens the energy barrier surrounding spaceships against small external dangers",
+      "Volume":"8",
+      "Weight":"15.6"
+    },
+    {
+      "Id":"component.shield.strong",
+      "Name":"Strong shield",
+      "Tags":"basic,shield",
+      "GlyphName":" ",
+      "Description":"A shield that strengthens the energy barrier surrounding spaceships against external dangers",
+      "Volume":"10",
+      "Weight":"21.7"
+    },
+    {
+      "Id":"component.cpu.mk1",
+      "Name":"CPU MK1",
+      "Tags":"basic,cpu",
+      "GlyphName":" ",
+      "Description":"A small integrated computer containing a processor core, memory, and a programmable input/output.",
+      "Volume":"3",
+      "Weight":"1.7"
+    },
+    {
+      "Id":"component.powerblock.small",
+      "Name":"Small Power block",
+      "Tags":"basic,power block",
+      "GlyphName":" ",
+      "Description":"Powers all the other components in the robot.",
+      "Volume":"7",
+      "Weight":"14.2"
+    },
+    {
+      "Id":"component.powerblock.medium",
+      "Name":"Medium Power block",
+      "Tags":"basic,power block",
+      "GlyphName":" ",
+      "Description":"Powers all the other components in the robot.",
+      "Volume":"10",
+      "Weight":"17.7"
+    },
+    {
+      "Id":"component.powerblock.large",
+      "Name":"Large power block",
+      "Tags":"basic,power block",
+      "GlyphName":" ",
+      "Description":"Powers all the other components in the robot.",
+      "Volume":"13",
+      "Weight":"21.9"
+    }
+  ],
+  "Recipes":[
+    {
+      "Id":"recipe.component.chassis.wheel.mk1",
+      "Item":"Wheels Chassis MK1",
+      "Name":"Wheels Chassis MK1 recipe",
+      "Tags":"chassis,wheel,component,bot",
+      "GlyphName":" ",
+      "Description":"Schematic describing the process for making a simple wheel",
+      "BaselineBuildTime":"120",
+      "RequiredFacility":"factory.basic",
+      "BaselineIngredientList":[
+        {
+          "Required":"8",
+          "ResourceId":"resource.ore"
+        },
+        {
+          "Required":12,
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":4,
+          "ResourceId":"resource.organic"
+        }
+      ]
+    },
+    {
+      "Id":"recipe.component.chassis.hover",
+      "Item":"Magnetic hover Chassis",
+      "Name":"Magnetic hover Chassis recipe",
+      "Tags":"chassis,hover,component,bot",
+      "GlyphName":" ",
+      "Description":"Schematic describing the process for making a magnetic hover chassis",
+      "BaselineBuildTime":"240",
+      "RequiredFacility":"factory.basic",
+      "resource.ore":[
+        {
+          "Required":13,
+          "ResourceId":"resource.ore"
+        },
+        {
+          "Required":2,
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":5,
+          "ResourceId":"resource.organic"
+        }
+      ]
+    },
+    {
+      "Id":"recipe.component.chassis.legs",
+      "Item":"Leg Chassis",
+      "Name":"Leg Chassis recipe",
+      "Tags":"chassis,legs,component,bot",
+      "GlyphName":" ",
+      "Description":"Schematic describing the process for making a set of legs",
+      "BaselineBuildTime":"180",
+      "RequiredFacility":"factory.basic",
+      "8":[
+        {
+          "Required":9,
+          "ResourceId":"resource.ore"
+        },
+        {
+          "Required":12,
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":2,
+          "ResourceId":"resource.organic"
+        }
+      ]
+    },
+    {
+      "Id":"recipe.component.sensor.radar",
+      "Item":"Radar Sensor",
+      "Name":"Radar Sensor recipe",
+      "Tags":"sensor,radar,component,bot",
+      "GlyphName":" ",
+      "Description":"Schematic describing the process for making a radar",
+      "BaselineBuildTime":"210",
+      "RequiredFacility":"factory.basic",
+      "13":[
+        {
+          "Required":4,
+          "ResourceId":"resource.ore"
+        },
+        {
+          "Required":1,
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":1,
+          "ResourceId":"resource.organic"
+        }
+      ]
+    },
+    {
+      "Id":"recipe.component.sensor.camera",
+      "Item":"Camera Sensor",
+      "Name":"Camera Sensor recipe",
+      "Tags":"sensor,camera,component,bot",
+      "GlyphName":" ",
+      "Description":"Schematic describing the process for making a camera",
+      "BaselineBuildTime":"190",
+      "RequiredFacility":"factory.basic",
+      "9":[
+        {
+          "Required":0.5,
+          "ResourceId":"resource.ore"
+        },
+        {
+          "Required":1,
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":0.5,
+          "ResourceId":"resource.organic"
+        }
+      ]
+    },
+    {
+      "Id":"recipe.component.sensor.microphone",
+      "Item":"Sonar Sensor",
+      "Name":"Sonar Sensor recipe",
+      "Tags":"sensor,microphone,component,bot",
+      "GlyphName":" ",
+      "Description":"Schematic describing the process for making a microphone",
+      "BaselineBuildTime":"220",
+      "RequiredFacility":"factory.basic",
+      "4":[
+        {
+          "Required":1,
+          "ResourceId":"resource.ore"
+        },
+        {
+          "Required":1,
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":0.5,
+          "ResourceId":"resource.organic"
+        }
+      ]
+    },
+    {
+      "Id":"recipe.component.tool.pickaxe",
+      "Item":"Pickaxe Tool",
+      "Name":"Pickaxe Tool recipe",
+      "Tags":"tool,pickaxe,component,bot",
+      "GlyphName":" ",
+      "Description":"Schematic describing the process for making a pickaxe",
+      "BaselineBuildTime":"70",
+      "RequiredFacility":"factory.basic",
+      "0.5":[
+        {
+          "Required":2,
+          "ResourceId":"resource.ore"
+        },
+        {
+          "Required":1,
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":1,
+          "ResourceId":"resource.organic"
+        }
+      ]
+    },
+    {
+      "Id":"recipe.component.tool.storage",
+      "Item":"Storage Tool",
+      "Name":"Storage Tool recipe",
+      "Tags":"tool,storage,component,bot",
+      "GlyphName":" ",
+      "Description":"Schematic describing the process for making a storage container",
+      "BaselineBuildTime":"50",
+      "RequiredFacility":"factory.basic",
+      "1":[
+        {
+          "Required":0.5,
+          "ResourceId":"resource.ore"
+        },
+        {
+          "Required":1,
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":0.5,
+          "ResourceId":"resource.organic"
+        }
+      ]
+    },
+    {
+      "Id":"recipe.component.tool.drill",
+      "Item":"Drill Tool",
+      "Name":"Drill Tool recipe",
+      "Tags":"tool,drill,component,bot",
+      "GlyphName":" ",
+      "Description":"Schematic describing the process for making a drill",
+      "BaselineBuildTime":"90",
+      "RequiredFacility":"factory.basic",
+      "2":[
+        {
+          "Required":19,
+          "ResourceId":"resource.ore"
+        },
+        {
+          "Required":3,
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":4,
+          "ResourceId":"resource.organic"
+        }
+      ]
+    },
+    {
+      "Id":"recipe.component.cpu.mk1",
+      "Item":"CPU MK1",
+      "Name":"CPU MK1 recipe",
+      "Tags":"cpu,component,bot",
+      "GlyphName":" ",
+      "Description":"Schematic describing the process for making a basic cpu",
+      "BaselineBuildTime":"290",
+      "RequiredFacility":"factory.basic",
+      "0.5":[
+        {
+          "Required":2,
+          "ResourceId":"resource.ore"
+        },
+        {
+          "Required":1,
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":1,
+          "ResourceId":"resource.organic"
+        }
+      ]
+    },
+    {
+      "Id":"recipe.component.powerblock.small",
+      "Item":"Small Power block",
+      "Name":"Small Power block recipe",
+      "Tags":"power block,small,component,bot",
+      "GlyphName":" ",
+      "Description":"Schematic describing the process for making a small power block",
+      "BaselineBuildTime":"250",
+      "RequiredFacility":"factory.basic",
+      "19":[
+        {
+          "Required":8,
+          "ResourceId":"resource.ore"
+        },
+        {
+          "Required":5,
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":3,
+          "ResourceId":"resource.organic"
+        }
+      ]
+    },
+    {
+      "Id":"recipe.component.powerblock.medium",
+      "Item":"Medium Power block",
+      "Name":"Medium Power block recipe",
+      "Tags":"power block,medium,component,bot",
+      "GlyphName":" ",
+      "Description":"Schematic describing the process for making a medium power block",
+      "BaselineBuildTime":"275",
+      "RequiredFacility":"factory.basic",
+      "2":[
+        {
+          "Required":9,
+          "ResourceId":"resource.ore"
+        },
+        {
+          "Required":6,
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":4,
+          "ResourceId":"resource.organic"
+        }
+      ]
+    },
+    {
+      "Id":"recipe.component.powerblock.large",
+      "Item":"Large power block",
+      "Name":"Large power block recipe",
+      "Tags":"power block,large,component,bot",
+      "GlyphName":" ",
+      "Description":"Schematic describing the process for making a large power block",
+      "BaselineBuildTime":"290",
+      "RequiredFacility":"factory.basic",
+      "8":[
+        {
+          "Required":10,
+          "ResourceId":"resource.ore"
+        },
+        {
+          "Required":7,
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":5,
+          "ResourceId":"resource.organic"
+        }
+      ]
+    },
+    {
+      "Id":"recipe.component.weapon.gun",
+      "Item":"Gun",
+      "Name":"Gun recipe",
+      "Tags":"weapon,gun,component,bot",
+      "GlyphName":"",
+      "Description":"Schematic describing the process for making a gun",
+      "BaselineBuildTime":"160",
+      "RequiredFacility":"factory.basic",
+      "9":[
+        {
+          "Required":4,
+          "ResourceId":"resource.ore"
+        },
+        {
+          "Required":1,
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":1,
+          "ResourceId":"resource.organic"
+        }
+      ]
+    },
+    {
+      "Id":"recipe.component.weapon.laser",
+      "Item":"Laser",
+      "Name":"Laser recipe",
+      "Tags":"weapon,laser,component,bot",
+      "GlyphName":"",
+      "Description":"Schematic describing the process for making a laser weapon",
+      "BaselineBuildTime":"205",
+      "RequiredFacility":"factory.basic",
+      "10":[
+        {
+          "Required":4,
+          "ResourceId":"resource.ore"
+        },
+        {
+          "Required":1,
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":2,
+          "ResourceId":"resource.organic"
+        }
+      ]
+    },
+    {
+      "Id":"recipe.component.weapon.bomb",
+      "Item":"Bomb",
+      "Name":"Bomb recipe",
+      "Tags":"weapon,bomb,component,bot",
+      "GlyphName":"",
+      "Description":"Schematic describing the process for making a bomb",
+      "BaselineBuildTime":"80",
+      "RequiredFacility":"factory.basic",
+      "4":[
+        {
+          "Required":2,
+          "ResourceId":"resource.ore"
+        },
+        {
+          "Required":1,
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":2,
+          "ResourceId":"resource.organic"
+        }
+      ]
+    },
+    {
+      "Id":"recipe.component.shield.weak",
+      "Item":"Weak shield",
+      "Name":"Weak shield recipe",
+      "Tags":"shield,weak,component,bot",
+      "GlyphName":"",
+      "Description":"Schematic describing the process for making a weak shield",
+      "BaselineBuildTime":"130",
+      "RequiredFacility":"factory.basic",
+      "4":[
+        {
+          "Required":10,
+          "ResourceId":"resource.ore"
+        },
+        {
+          "Required":4,
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":2,
+          "ResourceId":"resource.organic"
+        }
+      ]
+    },
+    {
+      "Id":"recipe.component.shield.strong",
+      "Item":"Strong shield",
+      "Name":"Strong shield recipe",
+      "Tags":"shield,strong,component,bot",
+      "GlyphName":"",
+      "Description":"Schematic describing the process for making a strong shield",
+      "BaselineBuildTime":"150",
+      "RequiredFacility":"factory.basic",
+      "2":[
+        {
+          "Required":14,
+          "ResourceId":"resource.ore"
+        },
+        {
+          "Required":5,
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":3,
+          "ResourceId":"resource.organic"
+        }
+      ]
+    }
+  ]
+}

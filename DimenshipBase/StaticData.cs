@@ -87,7 +87,7 @@ namespace DimenshipBase
         factory,
         component,
         recipe,
-        recource
+        resource
     }
 
     public static class StaticIdPathEtensions

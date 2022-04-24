@@ -15,6 +15,11 @@ namespace DimenshipBase
         string Name { get; }
     }
 
+    public interface ITimeConsumer
+    {
+        void RealTimePass(GameTime newTime);
+    }
+
     /// <summary>
     /// This should be serializable state, as it will be saved and restored 
     /// </summary>

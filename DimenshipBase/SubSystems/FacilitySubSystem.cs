@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 
-namespace DimenshipBase;
+namespace DimenshipBase.SubSystems;
 
 /// <summary>
 ///  keeps the list of built facilities and tracks availability

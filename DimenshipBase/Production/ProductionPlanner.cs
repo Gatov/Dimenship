@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using DimenshipBase.FungibleItems;
+using DimenshipBase.SubSystems;
 
 namespace DimenshipBase.Production;
 
@@ -23,13 +24,13 @@ public class ProductionPlannerSingleFacility
         if (facility==null)
         {
             result.Facilities = new List<FacilityEstimate>()
-                { new FacilityEstimate() { Function = recipe.RequiredFacility } };
+                { new() { Function = recipe.RequiredFacility } };
         }
         else
         {
             result.Facilities = new List<FacilityEstimate>()
             {
-                new FacilityEstimate()
+                new()
                 {
                     Function = recipe.RequiredFacility,
                     AllocatedId = facility.UniqueId, AllocatedName = facility.Name
@@ -60,6 +61,7 @@ public class ProductionPlannerSingleFacility
             storage.Book(ingredient.ResourceId, ingredient.Required);
         }
 
+        var start = system.CurrentTime;
         LogisticsStep resMove = new LogisticsStep()
         {
             Ingridients = estimate.Ingredients.Select(x => new Ingredient()
@@ -69,10 +71,22 @@ public class ProductionPlannerSingleFacility
             }).ToList(),
             DurationTicks = estimate.Ingredients
                 .Select(x => CalculateMoveTime(x.ResourceId, x.Required, system))
-                .Sum()
+                .Sum(),
+            StartTime =start 
             //staticData.GetItemClass(x.ResourceId).Weight*)
         };
+        var result = staticData.GetItemClass(recipe.Item);
+        ProductionStep productionStep = new ProductionStep()
+        { 
+            DurationTicks = recipe.BaselineBuildTime,
+            StartTime = start+ resMove.DurationTicks, // offset by duration of previous step
+            TargetCount = 1,
+            TargetName = result.Name,
+            TargetClassId = recipe.Item,
+            DetailedDescription = $"Producing {result.Name}"
+        };
         
+        p.Steps = new List<StepBase> {resMove, productionStep};
 
         // book rooms
         var facilities = system.GetSubState<FacilitySubSystem>();

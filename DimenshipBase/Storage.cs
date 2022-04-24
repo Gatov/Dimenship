@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
@@ -13,9 +15,33 @@ namespace DimenshipBase
     {
         [DataMember(Order = 1)][XmlAttribute] public string Id { get; set; }
         [DataMember(Order = 2)][XmlAttribute] public string Name { get; set; }
-        [DataMember(Order = 3)][XmlAttribute] public string Tags { get; set; }
+
+        [DataMember(Order = 3)]
+        [XmlAttribute]
+        public string Tags
+        {
+            get => _tags;
+            set  {  _tags = value;  tagsHs = null; }
+        }
+
         [DataMember(Order = 4)][XmlAttribute] public string GlyphName { get; set; }
         [DataMember(Order = 5)]public string Description { get; set; }
+
+        [NonSerialized] private HashSet<string> tagsHs;
+        private string _tags;
+
+        // on-demand HashSet building
+        public bool HasTag(string tag)
+        {
+            var local = tagsHs;
+            if (local == null)
+            {
+                local = Tags.Split(',', ' ').Where(x => !string.IsNullOrWhiteSpace(x)).ToHashSet();
+                tagsHs = local;
+            }
+
+            return local.Contains(tag);
+        }
     }
 
 

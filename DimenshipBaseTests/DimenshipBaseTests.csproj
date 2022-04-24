@@ -7,8 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="nunit" Version="3.11.0" />
-        <PackageReference Include="NUnit3TestAdapter" Version="3.11.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
     </ItemGroup>
 
@@ -18,9 +16,6 @@
 
     <ItemGroup>
       <None Remove="TestRecipeData.xml" />
-      <Content Include="TestRecipeData.xml">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
       <None Remove="Data\StaticDataRegression.json" />
       <Content Include="Data\StaticDataRegression.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -29,6 +24,9 @@
       <Content Include="Data\StaticDataTests.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
+      <None Update="Data\StaticDataGenerated.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

@@ -1,14 +1,16 @@
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using DimenshipBase.FungibleItems;
+using DimenshipBase.SubSystems;
 
 namespace DimenshipBase.Production;
 
+[DataContract(Name="LogisticsStep",Namespace = "P")]
 public class LogisticsStep : StepBase
 {
+    [DataMember]
     public List<Ingredient> Ingridients;
     public override string LogLine => "Moved resources to the production location";
-    public override string DetailedDescription { get; } = "";
-
     public override void OnProcessStart(ISystemStateSet system)
     {
         base.OnProcessStart(system);
@@ -21,13 +23,16 @@ public class LogisticsStep : StepBase
     }
 }
 
+[DataContract(Name="ProductionStep",Namespace = "P")]
 public class ProductionStep : StepBase
 {
+    [DataMember]
     public string TargetName { get; set; }
+    [DataMember]
     public string TargetClassId { get; set; }
+    [DataMember]
     public int TargetCount { get; set; }
-    public override string LogLine => "Producing" + TargetName;
-    public override string DetailedDescription { get; }
+    public override string LogLine => "Producing " + TargetName;
     
     public override void OnProcessEnd(ISystemStateSet system)
     {
