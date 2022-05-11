@@ -1,4 +1,15 @@
-﻿{
+{
+   "Facility":[
+      {
+         "Id":"factory.basic",
+         "Name":"Basic Factory",
+         "Tags":"factory production facility",
+         "GlyphName":"",
+         "Description":"Basic Factory for simple components production",
+         "Functions":"workshop assembly refinery",
+         "IdlePowerConsumption":"0.1"
+      }
+   ],
    "Items":[
       {
          "Id":"resource.ore",
@@ -224,7 +235,7 @@
          "Description":"Schematic describing the process for making a magnetic hover chassis",
          "BaselineBuildTime":"90",
          "RequiredFacility":"factory.basic",
-         "resource.ore":[
+         "BaselineIngredientList":[
             {
                "Required":13,
                "ResourceId":"resource.ore"
@@ -248,7 +259,7 @@
          "Description":"Schematic describing the process for making a set of legs",
          "BaselineBuildTime":"65",
          "RequiredFacility":"factory.basic",
-         "8":[
+         "BaselineIngredientList":[
             {
                "Required":9,
                "ResourceId":"resource.ore"
@@ -272,7 +283,7 @@
          "Description":"Schematic describing the process for making a radar",
          "BaselineBuildTime":"85",
          "RequiredFacility":"factory.basic",
-         "13":[
+         "BaselineIngredientList":[
             {
                "Required":4,
                "ResourceId":"resource.ore"
@@ -296,7 +307,7 @@
          "Description":"Schematic describing the process for making a camera",
          "BaselineBuildTime":"78",
          "RequiredFacility":"factory.basic",
-         "9":[
+         "BaselineIngredientList":[
             {
                "Required":0.5,
                "ResourceId":"resource.ore"
@@ -320,7 +331,7 @@
          "Description":"Schematic describing the process for making a microphone",
          "BaselineBuildTime":"96",
          "RequiredFacility":"factory.basic",
-         "4":[
+         "BaselineIngredientList":[
             {
                "Required":1,
                "ResourceId":"resource.ore"
@@ -344,7 +355,7 @@
          "Description":"Schematic describing the process for making a pickaxe",
          "BaselineBuildTime":"25",
          "RequiredFacility":"factory.basic",
-         "0.5":[
+         "BaselineIngredientList":[
             {
                "Required":2,
                "ResourceId":"resource.ore"
@@ -368,7 +379,7 @@
          "Description":"Schematic describing the process for making a storage container",
          "BaselineBuildTime":"15",
          "RequiredFacility":"factory.basic",
-         "1":[
+         "BaselineIngredientList":[
             {
                "Required":0.5,
                "ResourceId":"resource.ore"
@@ -392,7 +403,7 @@
          "Description":"Schematic describing the process for making a drill",
          "BaselineBuildTime":"45",
          "RequiredFacility":"factory.basic",
-         "2":[
+         "BaselineIngredientList":[
             {
                "Required":19,
                "ResourceId":"resource.ore"
@@ -416,7 +427,7 @@
          "Description":"Schematic describing the process for making a basic cpu",
          "BaselineBuildTime":"120",
          "RequiredFacility":"factory.basic",
-         "0.5":[
+         "BaselineIngredientList":[
             {
                "Required":2,
                "ResourceId":"resource.ore"
@@ -440,7 +451,7 @@
          "Description":"Schematic describing the process for making a small power block",
          "BaselineBuildTime":"105",
          "RequiredFacility":"factory.basic",
-         "19":[
+         "BaselineIngredientList":[
             {
                "Required":8,
                "ResourceId":"resource.ore"
@@ -464,7 +475,7 @@
          "Description":"Schematic describing the process for making a medium power block",
          "BaselineBuildTime":"110",
          "RequiredFacility":"factory.basic",
-         "2":[
+         "BaselineIngredientList":[
             {
                "Required":9,
                "ResourceId":"resource.ore"
@@ -488,7 +499,7 @@
          "Description":"Schematic describing the process for making a large power block",
          "BaselineBuildTime":"120",
          "RequiredFacility":"factory.basic",
-         "8":[
+         "BaselineIngredientList":[
             {
                "Required":10,
                "ResourceId":"resource.ore"
@@ -512,7 +523,7 @@
          "Description":"Schematic describing the process for making a gun",
          "BaselineBuildTime":"70",
          "RequiredFacility":"factory.basic",
-         "9":[
+         "BaselineIngredientList":[
             {
                "Required":4,
                "ResourceId":"resource.ore"
@@ -536,7 +547,7 @@
          "Description":"Schematic describing the process for making a laser weapon",
          "BaselineBuildTime":"80",
          "RequiredFacility":"factory.basic",
-         "10":[
+         "BaselineIngredientList":[
             {
                "Required":4,
                "ResourceId":"resource.ore"
@@ -560,7 +571,7 @@
          "Description":"Schematic describing the process for making a bomb",
          "BaselineBuildTime":"35",
          "RequiredFacility":"factory.basic",
-         "4":[
+         "BaselineIngredientList":[
             {
                "Required":2,
                "ResourceId":"resource.ore"
@@ -584,7 +595,7 @@
          "Description":"Schematic describing the process for making a weak shield",
          "BaselineBuildTime":"63",
          "RequiredFacility":"factory.basic",
-         "4":[
+         "BaselineIngredientList":[
             {
                "Required":10,
                "ResourceId":"resource.ore"
@@ -608,7 +619,7 @@
          "Description":"Schematic describing the process for making a strong shield",
          "BaselineBuildTime":"68",
          "RequiredFacility":"factory.basic",
-         "2":[
+         "BaselineIngredientList":[
             {
                "Required":14,
                "ResourceId":"resource.ore"
@@ -632,7 +643,7 @@
          "Description":"Schematic describing the process for making a basic bot frame",
          "BaselineBuildTime":"75",
          "RequiredFacility":"factory.basic",
-         "10":[
+         "BaselineIngredientList":[
             {
                "Required":31,
                "ResourceId":"resource.ore"
