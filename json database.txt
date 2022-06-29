@@ -1,13 +1,30 @@
 {
+   "Info":[
+      {
+         "Author":"Katya",
+         "Comment":"added info section and gate room",
+         "Date":"44741.6003674421",
+         "Version":"44741.6003674653"
+      }
+   ],
    "Facility":[
       {
          "Id":"factory.basic",
          "Name":"Basic Factory",
-         "Tags":"factory production facility",
+         "Tags":"factory,production,facility",
          "GlyphName":"",
          "Description":"Basic Factory for simple components production",
          "Functions":"workshop assembly refinery",
-         "IdlePowerConsumption":"0.1"
+         "IdlePowerConsumption":"1"
+      },
+      {
+         "Id":"gate.room.basic",
+         "Name":"Basic Gate Room",
+         "Tags":"gate room,basic",
+         "GlyphName":"",
+         "Description":"Room in which gates to alternate realities can be opened",
+         "Functions":"travel to other dimensions",
+         "IdlePowerConsumption":"1"
       }
    ],
    "Items":[
@@ -174,6 +191,15 @@
          "Weight":"1.7"
       },
       {
+         "Id":"component.basic.frame",
+         "Name":"Basic Frame",
+         "Tags":"basic,frame",
+         "GlyphName":" ",
+         "Description":"A frame that can be used as a base to attach other robot components",
+         "Volume":"37",
+         "Weight":"18"
+      },
+      {
          "Id":"component.powerblock.small",
          "Name":"Small Power block",
          "Tags":"basic,power block",
@@ -309,15 +335,15 @@
          "RequiredFacility":"factory.basic",
          "BaselineIngredientList":[
             {
-               "Required":0.5,
+               "Required":1,
                "ResourceId":"resource.ore"
             },
             {
-               "Required":1,
+               "Required":2,
                "ResourceId":"resource.ice"
             },
             {
-               "Required":0.5,
+               "Required":1,
                "ResourceId":"resource.organic"
             }
          ]
@@ -333,15 +359,15 @@
          "RequiredFacility":"factory.basic",
          "BaselineIngredientList":[
             {
-               "Required":1,
+               "Required":2,
                "ResourceId":"resource.ore"
             },
             {
-               "Required":1,
+               "Required":2,
                "ResourceId":"resource.ice"
             },
             {
-               "Required":0.5,
+               "Required":1,
                "ResourceId":"resource.organic"
             }
          ]
@@ -381,15 +407,15 @@
          "RequiredFacility":"factory.basic",
          "BaselineIngredientList":[
             {
-               "Required":0.5,
+               "Required":1,
                "ResourceId":"resource.ore"
             },
             {
-               "Required":1,
+               "Required":2,
                "ResourceId":"resource.ice"
             },
             {
-               "Required":0.5,
+               "Required":1,
                "ResourceId":"resource.organic"
             }
          ]
