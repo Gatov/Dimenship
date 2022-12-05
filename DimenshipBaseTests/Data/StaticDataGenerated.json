@@ -4,10 +4,10 @@
       "Id":"factory.basic",
       "Name":"Basic Factory",
       "Tags":"factory production facility",
-      "GlyphName":"facilities\/factory\/basic",
+      "GlyphName":"",
       "Description":"Basic Factory for simple components production",
       "Functions":"workshop assembly refinery",
-      "IdlePowerConsumption":0.1
+      "IdlePowerConsumption":"0.1"
     }
   ],
   "Items":[
@@ -204,16 +204,16 @@
   "Recipes":[
     {
       "Id":"recipe.component.chassis.wheel.mk1",
-      "Item":"Wheels Chassis MK1",
+      "Item":"component.chassis.wheel.mk1",
       "Name":"Wheels Chassis MK1 recipe",
       "Tags":"chassis,wheel,component,bot",
       "GlyphName":" ",
       "Description":"Schematic describing the process for making a simple wheel",
-      "BaselineBuildTime":"120",
+      "BaselineBuildTime":"40",
       "RequiredFacility":"factory.basic",
       "BaselineIngredientList":[
         {
-          "Required":"8",
+          "Required":8,
           "ResourceId":"resource.ore"
         },
         {
@@ -228,14 +228,14 @@
     },
     {
       "Id":"recipe.component.chassis.hover",
-      "Item":"Magnetic hover Chassis",
+      "Item":"component.chassis.hover",
       "Name":"Magnetic hover Chassis recipe",
       "Tags":"chassis,hover,component,bot",
       "GlyphName":" ",
       "Description":"Schematic describing the process for making a magnetic hover chassis",
-      "BaselineBuildTime":"240",
+      "BaselineBuildTime":"90",
       "RequiredFacility":"factory.basic",
-      "resource.ore":[
+      "BaselineIngredientList":[
         {
           "Required":13,
           "ResourceId":"resource.ore"
@@ -252,14 +252,14 @@
     },
     {
       "Id":"recipe.component.chassis.legs",
-      "Item":"Leg Chassis",
+      "Item":"component.chassis.legs",
       "Name":"Leg Chassis recipe",
       "Tags":"chassis,legs,component,bot",
       "GlyphName":" ",
       "Description":"Schematic describing the process for making a set of legs",
-      "BaselineBuildTime":"180",
+      "BaselineBuildTime":"65",
       "RequiredFacility":"factory.basic",
-      "8":[
+      "BaselineIngredientList":[
         {
           "Required":9,
           "ResourceId":"resource.ore"
@@ -276,14 +276,14 @@
     },
     {
       "Id":"recipe.component.sensor.radar",
-      "Item":"Radar Sensor",
+      "Item":"component.sensor.radar",
       "Name":"Radar Sensor recipe",
       "Tags":"sensor,radar,component,bot",
       "GlyphName":" ",
       "Description":"Schematic describing the process for making a radar",
-      "BaselineBuildTime":"210",
+      "BaselineBuildTime":"85",
       "RequiredFacility":"factory.basic",
-      "13":[
+      "BaselineIngredientList":[
         {
           "Required":4,
           "ResourceId":"resource.ore"
@@ -300,16 +300,16 @@
     },
     {
       "Id":"recipe.component.sensor.camera",
-      "Item":"Camera Sensor",
+      "Item":"component.sensor.camera",
       "Name":"Camera Sensor recipe",
       "Tags":"sensor,camera,component,bot",
       "GlyphName":" ",
       "Description":"Schematic describing the process for making a camera",
-      "BaselineBuildTime":"190",
+      "BaselineBuildTime":"78",
       "RequiredFacility":"factory.basic",
-      "9":[
+      "BaselineIngredientList":[
         {
-          "Required":0.5,
+          "Required":1,
           "ResourceId":"resource.ore"
         },
         {
@@ -317,21 +317,21 @@
           "ResourceId":"resource.ice"
         },
         {
-          "Required":0.5,
+          "Required":1,
           "ResourceId":"resource.organic"
         }
       ]
     },
     {
       "Id":"recipe.component.sensor.microphone",
-      "Item":"Sonar Sensor",
+      "Item":"component.sensor.microphone",
       "Name":"Sonar Sensor recipe",
       "Tags":"sensor,microphone,component,bot",
       "GlyphName":" ",
       "Description":"Schematic describing the process for making a microphone",
-      "BaselineBuildTime":"220",
+      "BaselineBuildTime":"96",
       "RequiredFacility":"factory.basic",
-      "4":[
+      "BaselineIngredientList":[
         {
           "Required":1,
           "ResourceId":"resource.ore"
@@ -341,21 +341,21 @@
           "ResourceId":"resource.ice"
         },
         {
-          "Required":0.5,
+          "Required":1,
           "ResourceId":"resource.organic"
         }
       ]
     },
     {
       "Id":"recipe.component.tool.pickaxe",
-      "Item":"Pickaxe Tool",
+      "Item":"component.tool.pickaxe",
       "Name":"Pickaxe Tool recipe",
       "Tags":"tool,pickaxe,component,bot",
       "GlyphName":" ",
       "Description":"Schematic describing the process for making a pickaxe",
-      "BaselineBuildTime":"70",
+      "BaselineBuildTime":"25",
       "RequiredFacility":"factory.basic",
-      "0.5":[
+      "BaselineIngredientList":[
         {
           "Required":2,
           "ResourceId":"resource.ore"
@@ -372,16 +372,16 @@
     },
     {
       "Id":"recipe.component.tool.storage",
-      "Item":"Storage Tool",
+      "Item":"component.tool.storage",
       "Name":"Storage Tool recipe",
       "Tags":"tool,storage,component,bot",
       "GlyphName":" ",
       "Description":"Schematic describing the process for making a storage container",
-      "BaselineBuildTime":"50",
+      "BaselineBuildTime":"15",
       "RequiredFacility":"factory.basic",
-      "1":[
+      "BaselineIngredientList":[
         {
-          "Required":0.5,
+          "Required":1,
           "ResourceId":"resource.ore"
         },
         {
@@ -389,21 +389,21 @@
           "ResourceId":"resource.ice"
         },
         {
-          "Required":0.5,
+          "Required":1,
           "ResourceId":"resource.organic"
         }
       ]
     },
     {
       "Id":"recipe.component.tool.drill",
-      "Item":"Drill Tool",
+      "Item":"component.tool.drill",
       "Name":"Drill Tool recipe",
       "Tags":"tool,drill,component,bot",
       "GlyphName":" ",
       "Description":"Schematic describing the process for making a drill",
-      "BaselineBuildTime":"90",
+      "BaselineBuildTime":"45",
       "RequiredFacility":"factory.basic",
-      "2":[
+      "BaselineIngredientList":[
         {
           "Required":19,
           "ResourceId":"resource.ore"
@@ -420,14 +420,14 @@
     },
     {
       "Id":"recipe.component.cpu.mk1",
-      "Item":"CPU MK1",
+      "Item":"component.cpu.mk1",
       "Name":"CPU MK1 recipe",
       "Tags":"cpu,component,bot",
       "GlyphName":" ",
       "Description":"Schematic describing the process for making a basic cpu",
-      "BaselineBuildTime":"290",
+      "BaselineBuildTime":"120",
       "RequiredFacility":"factory.basic",
-      "0.5":[
+      "BaselineIngredientList":[
         {
           "Required":2,
           "ResourceId":"resource.ore"
@@ -444,14 +444,14 @@
     },
     {
       "Id":"recipe.component.powerblock.small",
-      "Item":"Small Power block",
+      "Item":"component.powerblock.small",
       "Name":"Small Power block recipe",
       "Tags":"power block,small,component,bot",
       "GlyphName":" ",
       "Description":"Schematic describing the process for making a small power block",
-      "BaselineBuildTime":"250",
+      "BaselineBuildTime":"105",
       "RequiredFacility":"factory.basic",
-      "19":[
+      "BaselineIngredientList":[
         {
           "Required":8,
           "ResourceId":"resource.ore"
@@ -468,14 +468,14 @@
     },
     {
       "Id":"recipe.component.powerblock.medium",
-      "Item":"Medium Power block",
+      "Item":"component.powerblock.medium",
       "Name":"Medium Power block recipe",
       "Tags":"power block,medium,component,bot",
       "GlyphName":" ",
       "Description":"Schematic describing the process for making a medium power block",
-      "BaselineBuildTime":"275",
+      "BaselineBuildTime":"110",
       "RequiredFacility":"factory.basic",
-      "2":[
+      "BaselineIngredientList":[
         {
           "Required":9,
           "ResourceId":"resource.ore"
@@ -492,14 +492,14 @@
     },
     {
       "Id":"recipe.component.powerblock.large",
-      "Item":"Large power block",
+      "Item":"component.powerblock.large",
       "Name":"Large power block recipe",
       "Tags":"power block,large,component,bot",
       "GlyphName":" ",
       "Description":"Schematic describing the process for making a large power block",
-      "BaselineBuildTime":"290",
+      "BaselineBuildTime":"120",
       "RequiredFacility":"factory.basic",
-      "8":[
+      "BaselineIngredientList":[
         {
           "Required":10,
           "ResourceId":"resource.ore"
@@ -516,14 +516,14 @@
     },
     {
       "Id":"recipe.component.weapon.gun",
-      "Item":"Gun",
+      "Item":"component.weapon.gun",
       "Name":"Gun recipe",
       "Tags":"weapon,gun,component,bot",
       "GlyphName":"",
       "Description":"Schematic describing the process for making a gun",
-      "BaselineBuildTime":"160",
+      "BaselineBuildTime":"70",
       "RequiredFacility":"factory.basic",
-      "9":[
+      "BaselineIngredientList":[
         {
           "Required":4,
           "ResourceId":"resource.ore"
@@ -540,14 +540,14 @@
     },
     {
       "Id":"recipe.component.weapon.laser",
-      "Item":"Laser",
+      "Item":"component.weapon.laser",
       "Name":"Laser recipe",
       "Tags":"weapon,laser,component,bot",
       "GlyphName":"",
       "Description":"Schematic describing the process for making a laser weapon",
-      "BaselineBuildTime":"205",
+      "BaselineBuildTime":"80",
       "RequiredFacility":"factory.basic",
-      "10":[
+      "BaselineIngredientList":[
         {
           "Required":4,
           "ResourceId":"resource.ore"
@@ -564,14 +564,14 @@
     },
     {
       "Id":"recipe.component.weapon.bomb",
-      "Item":"Bomb",
+      "Item":"component.weapon.bomb",
       "Name":"Bomb recipe",
       "Tags":"weapon,bomb,component,bot",
       "GlyphName":"",
       "Description":"Schematic describing the process for making a bomb",
-      "BaselineBuildTime":"80",
+      "BaselineBuildTime":"35",
       "RequiredFacility":"factory.basic",
-      "4":[
+      "BaselineIngredientList":[
         {
           "Required":2,
           "ResourceId":"resource.ore"
@@ -588,14 +588,14 @@
     },
     {
       "Id":"recipe.component.shield.weak",
-      "Item":"Weak shield",
+      "Item":"component.shield.weak",
       "Name":"Weak shield recipe",
       "Tags":"shield,weak,component,bot",
       "GlyphName":"",
       "Description":"Schematic describing the process for making a weak shield",
-      "BaselineBuildTime":"130",
+      "BaselineBuildTime":"63",
       "RequiredFacility":"factory.basic",
-      "4":[
+      "BaselineIngredientList":[
         {
           "Required":10,
           "ResourceId":"resource.ore"
@@ -612,14 +612,14 @@
     },
     {
       "Id":"recipe.component.shield.strong",
-      "Item":"Strong shield",
+      "Item":"component.shield.strong",
       "Name":"Strong shield recipe",
       "Tags":"shield,strong,component,bot",
       "GlyphName":"",
       "Description":"Schematic describing the process for making a strong shield",
-      "BaselineBuildTime":"150",
+      "BaselineBuildTime":"68",
       "RequiredFacility":"factory.basic",
-      "2":[
+      "BaselineIngredientList":[
         {
           "Required":14,
           "ResourceId":"resource.ore"
@@ -630,6 +630,30 @@
         },
         {
           "Required":3,
+          "ResourceId":"resource.organic"
+        }
+      ]
+    },
+    {
+      "Id":"recipe.component.basic.frame",
+      "Item":"component.basic.frame",
+      "Name":"Basic Frame recipe",
+      "Tags":"frame,component,bot",
+      "GlyphName":"",
+      "Description":"Schematic describing the process for making a basic bot frame",
+      "BaselineBuildTime":"75",
+      "RequiredFacility":"factory.basic",
+      "BaselineIngredientList":[
+        {
+          "Required":31,
+          "ResourceId":"resource.ore"
+        },
+        {
+          "Required":3,
+          "ResourceId":"resource.ice"
+        },
+        {
+          "Required":6,
           "ResourceId":"resource.organic"
         }
       ]

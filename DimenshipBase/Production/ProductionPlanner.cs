@@ -13,6 +13,7 @@ public interface IProductionOptions
 
 public class ProductionPlannerSingleFacility
 {
+    const int MinLogisticsTimeTicks = 10;
     public ProductionEstimate GetEstimate(ISystemStateSet system, ComponentRecipe recipe, IProductionOptions options)
     {
         ProductionEstimate result = new ProductionEstimate();
@@ -49,17 +50,17 @@ public class ProductionPlannerSingleFacility
         return result;
     }
     
-    public ProcessBase CreateProcess(ISystemStateSet system, ComponentRecipe recipe, IProductionOptions options)
+    public ProcessBase CreateProductionProcess(ISystemStateSet system, ComponentRecipe recipe, IProductionOptions options)
     {
         ProcessBase p = new ProcessBase();
         var estimate = GetEstimate(system, recipe, options);
         // book resources
-        var storage = system.GetSubState<ItemStorageSubSystem>();
+        // var storage = system.GetSubState<ItemStorageSubSystem>();
         var staticData = system.GetSubState<StaticDataSubSystem>();
-        foreach (var ingredient in estimate.Ingredients)
-        {
-            storage.Book(ingredient.ResourceId, ingredient.Required);
-        }
+        // foreach (var ingredient in estimate.Ingredients)
+        // {
+        //     storage.Book(ingredient.ResourceId, ingredient.Required);
+        // }
 
         var start = system.CurrentTime;
         LogisticsStep resMove = new LogisticsStep()
@@ -72,7 +73,9 @@ public class ProductionPlannerSingleFacility
             DurationTicks = estimate.Ingredients
                 .Select(x => CalculateMoveTime(x.ResourceId, x.Required, system))
                 .Sum(),
-            StartTime =start 
+            StartTime =start,
+            DetailedDescription = $"Moved resources for {recipe.Item} to the production location"
+            
             //staticData.GetItemClass(x.ResourceId).Weight*)
         };
         var result = staticData.GetItemClass(recipe.Item);
@@ -105,7 +108,7 @@ public class ProductionPlannerSingleFacility
         var staticData = system.GetSubState<StaticDataSubSystem>();
         var resClass = staticData.GetItemClass(argResourceId);
         // TODO LogisticSubSystem
-        return (int)Math.Ceiling(resClass.Weight * argRequired/10);
+        return (int)Math.Min(MinLogisticsTimeTicks, Math.Ceiling(resClass.Weight * argRequired/10));
     }
 }
 

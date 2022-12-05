@@ -27,7 +27,8 @@ public class UserConsole
         _commands = new List<ICommand>()
         {
             new ListCommand(),
-            new BuildCommand()
+            new BuildCommand(),
+            new ProcessesCommand()
         };
     }
 
@@ -95,7 +96,9 @@ public class UserConsole
             _running = false;
             return;
         }
-
+        if(string.IsNullOrWhiteSpace(s))
+            return;
+        
         var args = s.Split(' ',',').Where(x=>!string.IsNullOrWhiteSpace(x)).ToList();
         var cmd = _commands.FirstOrDefault(x => x.Command == args[0]);
 

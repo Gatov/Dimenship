@@ -31,9 +31,9 @@ public class BuildCommand : ICommand
         }
         
         var processFactory = new ProductionPlannerSingleFacility();
-        var process = processFactory.CreateProcess(system, recipe, null);
+        var process = processFactory.CreateProductionProcess(system, recipe, null);
         var ps = system.GetSubState<ProcessSubSystem>();
-        ps.Add(process);
+        ps.Add(process).StartProcess(system);
         return true;
     }
 }

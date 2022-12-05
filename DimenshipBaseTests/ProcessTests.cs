@@ -28,7 +28,7 @@ public class ProcessTests
         var system = LoadSystem();
         var recipe = system.GetSubState<StaticDataSubSystem>().GetRecipe(Category.recipe.Path("component", "chassis", "wheel", "mk1"));
         var processFactory = new ProductionPlannerSingleFacility();
-        var process = processFactory.CreateProcess(system, recipe, null);
+        var process = processFactory.CreateProductionProcess(system, recipe, null);
         //var ing = new Ingredient() { Required = 1, ResourceId = @"test" };
         Console.WriteLine(Utils.AsJSON(process));
     }

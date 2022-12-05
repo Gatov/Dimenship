@@ -10,15 +10,20 @@ public class LogisticsStep : StepBase
 {
     [DataMember]
     public List<Ingredient> Ingridients;
-    public override string LogLine => "Moved resources to the production location";
+
+    public LogisticsStep()
+    {
+    }
+
+    public override string LogLine =>DetailedDescription;
     public override void OnProcessStart(ISystemStateSet system)
     {
         base.OnProcessStart(system);
         var storage = system.GetSubState<ItemStorageSubSystem>();
-        foreach (var ingridient in Ingridients)
+        foreach (var ingredient in Ingridients)
         {
-            //if(storage.Check(ingridient.ResourceId) < )
-            storage.Book(ingridient.ResourceId, ingridient.Required);
+            //if(storage.Check(ingredient.ResourceId) < )
+            storage.Book(ingredient.ResourceId, ingredient.Required);
         }
     }
 }

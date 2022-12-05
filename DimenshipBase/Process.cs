@@ -26,6 +26,14 @@ namespace DimenshipBase
             }
         }
 
+        public void StartProcess(ISystemStateSet system)
+        {
+            foreach (var step in Steps)
+            {
+                step.OnProcessStart(system);
+            }
+        }
+
         public void PassTime(ISystemStateSet system, GameTime newTime)
         {
             if (Complete)
@@ -33,6 +41,11 @@ namespace DimenshipBase
             foreach (var step in Steps)
             {
                 if (step.Complete) continue;
+                if (step.Started == false)
+                {
+                    step.OnStepStart(system);
+                }
+                
                 if(step.FinishTime <newTime)
                     step.OnStepEnd(system);
                 else
@@ -40,6 +53,10 @@ namespace DimenshipBase
             }
 
             Complete = true;
+            foreach (var step in Steps)
+            {
+                step.OnProcessEnd(system);
+            }
             system.Notify($"Assembly of an item is complete");
         }
 
@@ -57,17 +74,24 @@ namespace DimenshipBase
         [DataMember(Order = 4)]
         public bool Complete { get; set; }
         
+        [DataMember(Order = 5)]
+        public bool Started { get; set; }
+        
         [DataMember(Order = 3)]
         public int DurationTicks { get; set; }
         [DataMember(Order = 2)]
         public GameTime StartTime { get; set; }
         public GameTime FinishTime => StartTime + DurationTicks;
         public abstract string LogLine { get; }
-        [DataMember(Order = 5)]
+        [DataMember(Order = 6)]
         public string DetailedDescription { get; set; }
 
         public virtual void OnProcessStart(ISystemStateSet system) { }
-        //public virtual void OnStepStart(ISystemStateSet system) { }
+
+        public virtual void OnStepStart(ISystemStateSet system)
+        {
+            Started = true;
+        }
         public virtual void OnStepEnd(ISystemStateSet system)
         {
             Complete = true;

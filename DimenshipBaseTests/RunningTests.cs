@@ -16,7 +16,8 @@ public class RunningTests
         system.UpdateTime(new GameTime(baseTime));
         var recipe = system.GetSubState<StaticDataSubSystem>().GetRecipe(Category.recipe.Path("component", "chassis", "wheel", "mk1"));
         var processFactory = new ProductionPlannerSingleFacility();
-        var process = processFactory.CreateProcess(system, recipe, null);
+        var process = processFactory.CreateProductionProcess(system, recipe, null);
+        process.StartProcess(system);
         
         Assert.AreEqual(2,process.Steps.Count);
         Assert.AreEqual(13,process.Steps[0].DurationTicks);

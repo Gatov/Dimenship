@@ -7,7 +7,7 @@ namespace DimenshipConsole;
 
 public class Initializer
 {
-    private const string StaticDataFile = @"StaticDataGenerated.json";
+    private const string StaticDataFile = @"json database.txt";
     private const string StaticDataFolder = @"Data";
     public static DimenshipSystem CreateSystem()
     {

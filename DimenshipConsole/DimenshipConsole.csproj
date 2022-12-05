@@ -13,6 +13,10 @@
 
     <ItemGroup>
       <None Remove="Data\StaticDataGenerated.json" />
+      <Content Include="..\json database.txt">
+        <Link>Data\json database.txt</Link>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Content>
       <Content Include="Data\StaticDataGenerated.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>

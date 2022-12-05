@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Security.Cryptography;
+using System.Transactions;
 
 namespace DimenshipBase.SubSystems;
 
@@ -14,10 +16,10 @@ public class ProcessSubSystem : ISystemSubState, ITimeConsumer
     private ISystemStateSet _system;
     private int idAllocationCounter = 0;
     [DataMember(Name = "list")]
-    private List<ProcessBase> List 
+    public  List<ProcessBase> List 
     {
         get { lock (_syncRoot)  return _dic.Values.ToList(); }
-        set { lock (_syncRoot)  _dic = value.ToDictionary(x=>x.UniqueId); }
+        private set { lock (_syncRoot)  _dic = value.ToDictionary(x=>x.UniqueId); }
     }
 
     public void Initialize(ISystemStateSet system)
@@ -35,8 +37,9 @@ public class ProcessSubSystem : ISystemSubState, ITimeConsumer
         lock (_syncRoot)
         {
             proc.UniqueId = ++idAllocationCounter;
-            return _dic[proc.UniqueId] = proc;
+             _dic[proc.UniqueId] = proc;
         }
+        return proc;
     }
     
     /// <summary>
@@ -48,9 +51,19 @@ public class ProcessSubSystem : ISystemSubState, ITimeConsumer
         //subStatesValue.RealTimePass(newTime);
         lock (_syncRoot)
         {
+            List<int> toDelete=null;
             foreach (var proc in _dic.Values)
             {
                 proc.PassTime(_system, newTime);
+                if (proc.Complete)
+                    (toDelete ??= new List<int>()).Add(proc.UniqueId);
+            }
+
+            if (toDelete == null) return;
+            // remove done processes
+            foreach (var id in toDelete)
+            {
+                _dic.Remove(id);
             }
         }
     }
