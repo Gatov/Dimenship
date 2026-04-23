@@ -1,11 +1,12 @@
-using System.Diagnostics;
-
 namespace DcCoreLib;
 
 public interface IMessage { }
 
+public record BrokerError(string SubscriberId, string MessageType, Exception Exception);
+
 public interface IBroker
 {
+    event Action<BrokerError>? Error;
     void Publish(IMessage message);
     IDisposable Subscribe<T>(Action<T> handler, string subscriberId) where T : IMessage;
     void Unsubscribe(string subscriberId);
@@ -20,13 +21,15 @@ internal interface IHandlerWrapper
 internal sealed class HandlerWrapper<T> : IHandlerWrapper where T : IMessage
 {
     private readonly Action<T> _handler;
+    private readonly Action<BrokerError>? _onError;
 
     public string SubscriberId { get; }
 
-    public HandlerWrapper(Action<T> handler, string subscriberId)
+    public HandlerWrapper(Action<T> handler, string subscriberId, Action<BrokerError>? onError)
     {
         _handler = handler;
         SubscriberId = subscriberId;
+        _onError = onError;
     }
 
     public void Handle(IMessage message)
@@ -37,7 +40,7 @@ internal sealed class HandlerWrapper<T> : IHandlerWrapper where T : IMessage
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Handler for {typeof(T).Name} from '{SubscriberId}' threw: {ex.Message}");
+            _onError?.Invoke(new BrokerError(SubscriberId, typeof(T).FullName!, ex));
         }
     }
 }
@@ -67,12 +70,14 @@ public sealed class Broker : IBroker
     private readonly object _syncRoot = new();
     private readonly Dictionary<string, List<IHandlerWrapper>> _handlers = new();
 
+    public event Action<BrokerError>? Error;
+
     public void Publish(IMessage message)
     {
         IHandlerWrapper[] snapshot;
         lock (_syncRoot)
         {
-            if (!_handlers.TryGetValue(message.GetType().Name, out var list))
+            if (!_handlers.TryGetValue(message.GetType().FullName!, out var list))
                 return;
             snapshot = list.ToArray();
         }
@@ -84,13 +89,15 @@ public sealed class Broker : IBroker
     {
         lock (_syncRoot)
         {
-            var key = typeof(T).Name;
+            var key = typeof(T).FullName!;
             if (!_handlers.TryGetValue(key, out var list))
             {
                 list = new List<IHandlerWrapper>();
                 _handlers[key] = list;
             }
-            list.Add(new HandlerWrapper<T>(handler, subscriberId));
+            if (list.Any(h => h.SubscriberId == subscriberId))
+                throw new InvalidOperationException($"Subscriber '{subscriberId}' is already registered for '{key}'.");
+            list.Add(new HandlerWrapper<T>(handler, subscriberId, FireError));
         }
         return new Subscription(this, subscriberId);
     }
@@ -103,4 +110,6 @@ public sealed class Broker : IBroker
                 list.RemoveAll(h => h.SubscriberId == subscriberId);
         }
     }
+
+    private void FireError(BrokerError error) => Error?.Invoke(error);
 }
