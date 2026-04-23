@@ -95,4 +95,53 @@ public class BrokerTests
         Assert.That(() => broker.Publish(new TestMessage("x")), Throws.Nothing);
         Assert.That(secondCalled, Is.True);
     }
+
+    [Test]
+    public void HandlerException_FiresErrorEvent()
+    {
+        var broker = new Broker();
+        BrokerError? capturedError = null;
+        broker.Error += err => capturedError = err;
+        broker.Subscribe<TestMessage>(_ => throw new InvalidOperationException("boom"), "bad");
+
+        broker.Publish(new TestMessage("x"));
+
+        Assert.That(capturedError, Is.Not.Null);
+        Assert.That(capturedError!.SubscriberId, Is.EqualTo("bad"));
+        Assert.That(capturedError.Exception.Message, Is.EqualTo("boom"));
+        Assert.That(capturedError.MessageType, Does.Contain("TestMessage"));
+    }
+
+    [Test]
+    public void Subscribe_DuplicateSubscriberIdForSameType_Throws()
+    {
+        var broker = new Broker();
+        broker.Subscribe<TestMessage>(_ => { }, "sub1");
+
+        Assert.That(
+            () => broker.Subscribe<TestMessage>(_ => { }, "sub1"),
+            Throws.TypeOf<InvalidOperationException>());
+    }
+
+    [Test]
+    public void Subscribe_SameSubscriberIdForDifferentTypes_IsAllowed()
+    {
+        var broker = new Broker();
+
+        Assert.That(() =>
+        {
+            broker.Subscribe<TestMessage>(_ => { }, "sub1");
+            broker.Subscribe<OtherMessage>(_ => { }, "sub1");
+        }, Throws.Nothing);
+    }
+
+    [Test]
+    public void Subscribe_AfterUnsubscribe_AllowsReuseOfSubscriberId()
+    {
+        var broker = new Broker();
+        broker.Subscribe<TestMessage>(_ => { }, "sub1");
+        broker.Unsubscribe("sub1");
+
+        Assert.That(() => broker.Subscribe<TestMessage>(_ => { }, "sub1"), Throws.Nothing);
+    }
 }
